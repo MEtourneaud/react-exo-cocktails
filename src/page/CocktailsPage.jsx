@@ -4,25 +4,22 @@ import Header from "../components/Header"
 
 function CocktailsPage() {
 
-    // useState permet de stocker dans une variable et donner par défaut la valeur "null" et l'utilisera au premier chargement du composant
-    // Aux chargements suivants, il prendra la valeur stocké dans le composant
-    const [cocktails, setCocktails] = useState(null)
+        // useState permet de stocker dans une variable et donner par défaut la valeur "null" et l'utilisera au premier chargement du composant
+        // Aux chargements suivants, il prendra la valeur stocké dans le composant
+        const [cocktails, setCocktails] = useState(null)
 
-    // La boucle if permet de faire en sorte que le composant ne se recharge pas constamment
-    // Une fois que des données sont détectées, le rechargement ne s'effectue pas
-    if (!cocktails) {
-        // Ici grâce au fetch je peux récupérer, de manière asynchrone, les données de l'API
-        fetch (`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`)
-        // Le premier "then" permet d'attendre jusqu'à avoir récupéré les données
-        .then((cocktailsResponse) => {
-            return cocktailsResponse.json()
-        })
-        // Une fois qu'elles sont récupérées le second "then" permet d'afficher ces données en json dans un console log
-        .then((cocktailsInJs) => {
-            // console.log(cocktailsInJs);
-            // On rajoute le .drinks pour récupérer la clé de l'API
-            setCocktails(cocktailsInJs.drinks);
-    })}
+        // La boucle if permet de faire en sorte que le composant ne se recharge pas constamment
+        // Une fois que des données sont détectées, le rechargement ne s'effectue pas
+        if (!cocktails) {
+        // Fonction anonyme (pas de nom) qui s'auto-invoque (plus moderne)
+        // Cela permet d'effectuer des opérations asynchrones (fetch) sans devoir créer un vraie fonction asynchrone (qu'on devrait appeler avec un await)
+        (async () => {
+            // Le premier "await" permet d'attendre jusqu'à avoir récupéré les données de l'API
+            const cocktailsResponse = await fetch (`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`)
+            // Une fois les données récupérées, le second "await" permet d'afficher ces données json en js
+            const cocktailsInJs = await cocktailsResponse.json()
+            setCocktails(cocktailsInJs.drinks)
+        })()}
     
     return(
         <>
