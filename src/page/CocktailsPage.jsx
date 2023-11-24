@@ -8,7 +8,7 @@ function CocktailsPage() {
         // Aux chargements suivants, il prendra la valeur stocké dans le composant
         const [cocktails, setCocktails] = useState(null)
 
-        // La boucle if permet de faire en sorte que le composant ne se recharge pas constamment
+        // La condition if permet de faire en sorte que le composant ne se recharge pas constamment
         // Une fois que des données sont détectées, le rechargement ne s'effectue pas
         if (!cocktails) {
         // Fonction anonyme (pas de nom) qui s'auto-invoque (plus moderne)
@@ -23,7 +23,7 @@ function CocktailsPage() {
     
     return(
         <>
-            <Header currentPage={"CocktailPage"}/>
+            <Header />
             {/* Ici je fais en sorte qu'un affichage ait lieu même si les données ne sont pas prêtes à être affichées */}
             {cocktails ? (
                 <>

@@ -7,6 +7,7 @@ function Header() {
             <ul>
                 <li><Link to="/">Accueil</Link></li>
                 <li><Link to="/cocktails">Cocktails</Link></li>
+                <li><Link to="/random">Cocktail au hasard</Link></li>
             </ul>
         </header>
     )
