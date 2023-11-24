@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 
@@ -7,12 +7,18 @@ function CocktailRandomPage() {
     // useState permet de stocker dans une variable et donner par défaut la valeur "null" et l'utilisera au premier chargement du composant
     // Aux chargements suivants, il prendra la valeur stocké dans le composant
     const [randomCocktail, setRandomCocktails] = useState(null)
+    
+    
 
-    // La condition if permet de faire en sorte que le composant ne se recharge pas constamment
-    // Une fois que des données sont détectées, le rechargement ne s'effectue pas
-    if(!randomCocktail) {
+
+    
+    // useEffect permet d'exécuter du code uniquement à certains
+    // chargements du composant (soit le premier, soit à chaque fois etc)
+    // Ici on place un tableau vide en deuxième paramètre de use effect
+    // pour executer la fonction une seule fois au premier chargement du composant
+    useEffect(() => {
         // Fonction anonyme (pas de nom) qui s'auto-invoque
-        // Cela permet d'effectuer des opérations asynchrones (fetch) sans devoir créer un vraie fonction asynchrone (qu'on devrait appeler avec un await)
+        // Cela permet d'effectuer des opérations asynchrones (fetch) sans devoir créer une fonction asynchrone (qu'on devrait appeler avec un await)
         (async () => {
             // Le premier "await" permet d'attendre jusqu'à avoir récupéré les données de l'API
             const cocktailRandomResponse = await fetch (`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
@@ -20,7 +26,8 @@ function CocktailRandomPage() {
             const cocktailRandomInJs = await cocktailRandomResponse.json()
             setRandomCocktails(cocktailRandomInJs.drinks[0])
         })()
-    }
+    }, [])
+    
 
     return(
         <>
