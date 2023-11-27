@@ -17,11 +17,12 @@ function CategoriesPage() {
     return(
         <>
             <Header />
+            <h3>Liste des catégories</h3>
             {categories ? (
                 <>
                     {categories.map((category) => {
                         return (
-                            <h2>{category.strCategory}</h2>
+                            <p>{category.strCategory}</p>
                         )
                     })}
                 </>
