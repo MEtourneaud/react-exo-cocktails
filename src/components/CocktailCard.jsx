@@ -4,7 +4,7 @@ function CocktailCard({ cocktailToDisplay }) {
   // Je déclare une fonction avec un event listener avec comme paramètre "event" (obligatoire) et l'id du cocktail ciblé
   const handleDeleteCocktail = async (event, id) => {
     // Je fais un appel fetch, sur une url existante avec l'id du cocktail à supprimer,
-    // avec la method "DELETE" afin de supprimer tout ce qui est en lien avec l'id du cocktail ciblé
+    // avec la method "DELETE" afin de supprimer tout ce qui est en lien avec l'id du cocktail ciblé.
     const cocktailResponse = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/fake-delete.php?s=${cocktailId}`,
       {
