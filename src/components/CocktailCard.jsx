@@ -6,7 +6,7 @@ function CocktailCard({ cocktailToDisplay }) {
     // Je fais un appel fetch, sur une url existante avec l'id du cocktail à supprimer,
     // avec la method "DELETE" afin de supprimer tout ce qui est en lien avec l'id du cocktail ciblé.
     const cocktailResponse = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/fake-delete.php?s=${cocktailId}`,
+      `https://www.thecocktaildb.com/api/json/v1/1/fake-delete.php?s=` + id,
       {
         method: `DELETE`,
       }
