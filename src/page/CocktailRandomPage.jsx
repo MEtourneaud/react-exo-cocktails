@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import { Link } from "react-router-dom"
 
 function CocktailRandomPage() {
 
@@ -37,6 +38,7 @@ function CocktailRandomPage() {
                 <article>
                     <h3>{randomCocktail.strDrink}</h3>
                     <img src={randomCocktail.strDrinkThumb} alt={randomCocktail.strDrink} />
+                    <Link to={`/cocktails/details/${randomCocktail.idDrink}`}>Plus de détails</Link>
                 </article>
             ) : (
                 <div>

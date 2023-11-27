@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import { Link } from "react-router-dom"
 
 function CocktailsPage() {
 
@@ -39,6 +40,7 @@ function CocktailsPage() {
                             <article>
                                 <h3>{cocktail.strDrink}</h3>
                                 <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                                <Link to={`/cocktails/details/${cocktail.idDrink}`}>Plus de détails</Link>
                             </article>
                         )
                     })}
