@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import { Link } from "react-router-dom"
 import CocktailCard from "../components/CocktailCard"
 
 function CocktailRandomPage() {
